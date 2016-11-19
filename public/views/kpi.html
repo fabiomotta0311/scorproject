@@ -1,0 +1,33 @@
+
+<div align="center"><h1>{{mensagem}}</h1></div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Titulo do Indicador</th>
+          <th>Responsavel</th>
+          <th>Código</th>
+
+          <th>Ações</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" ng-model="kpi.name"></td>
+          <td><input class="form-control" ng-model="kpi.owner"></td>
+          <td><input class="form-control" ng-model="kpi.code"></td>
+          <td><button class="btn btn-primary" ng-click="addKpi()"  > Adicionar </button></td>
+          <td><button class="btn btn-info"    ng-click="update()"  > Atualizar </button>&nbsp;&nbsp;
+              <button class="btn btn-info"    ng-click="deselect()"> Limpar    </button></td>
+        </tr>
+        <tr ng-repeat="kpi in kpilist">
+          <td>{{kpi.name}}</td>
+          <td>{{kpi.email}}</td>
+          <td>{{kpi.number}}</td>
+          <td><button class="glyphicon glyphicon-remove" ng-click="remove(kpi._id)"></button>
+          <button class="glyphicon glyphicon-edit" ng-click="edit(kpi._id)"></button>
+          <button class="glyphicon glyphicon-stats" ng-click="detail(kpi._id)"></button></td>
+        </tr>
+      </tbody>
+    </table>

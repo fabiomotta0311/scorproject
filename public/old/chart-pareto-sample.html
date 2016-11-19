@@ -1,0 +1,95 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<div id="container" style="height: 400px"></div>
+
+
+var chart = new Highcharts.Chart({
+    chart: {
+        renderTo: 'container',
+        defaultSeriesType: 'column',
+        borderWidth:1,
+        borderColor:'#ccc',
+        marginLeft:110,
+        marginRight:50,
+        backgroundColor:'#eee',
+        plotBackgroundColor:'#fff',
+        alignTicks:false,
+    },
+    title:{
+        text:'Pareto Test 2'
+    },
+    legend:{
+                                     
+    },
+    tooltip:{
+        formatter:function(){
+                if(this.series.name == 'Cumulative Percent'){
+                    return this.y + '%';
+                }
+                return this.y;
+            }
+    },
+    plotOptions: {
+        series: {
+            shadow:false,
+        }
+    },
+    xAxis:{
+        categories:['A','B','C','D','E','F','G','H'],
+        lineColor:'#999',
+        lineWidth:1,
+        tickColor:'#666',
+        tickLength:3,
+        title:{
+            text:'X Axis Title',
+            style:{
+                color:'#000'
+            }
+        }
+    },
+    yAxis:[{
+        endOnTick:false,
+        lineColor:'#999',
+        lineWidth:1,
+        tickColor:'#666',
+        tickWidth:1,
+        tickLength:3,
+        gridLineColor:'#ddd',
+        title:{
+            text:'Y Axis Title',
+            rotation:0,
+            margin:50,
+            style:{
+                color:'#000'
+            }
+        }
+    },{
+        title:{text:''},
+        gridLineWidth:0,
+        lineColor:'#999',
+        lineWidth:1,
+        tickColor:'#666',
+        tickWidth:1,
+        tickLength:3,
+        endOnTick:false,
+        opposite:true,
+        min:0,
+        labels:{
+            formatter:function(){
+                return this.value + '%';
+            }
+        }
+    }],
+    series: [{
+        name:'Values',
+        yAxis:0,
+        data: [515,475,360,255,245,230,120,115],
+    },{
+        type:'line',
+        name:'Cumulative Percent',
+        yAxis:1,
+        data: [28,46,60,73,84,91,96,100],
+    }]
+});
